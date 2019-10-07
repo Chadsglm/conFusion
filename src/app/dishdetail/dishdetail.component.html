@@ -2,11 +2,11 @@
      fxLayout="row"
      fxLayout.sm="column"
      fxLayout.xs="column"
-     fxLayoutAlign.gt-md="space-around flex-start"
+     fxLayoutAlign.gt-md="space-around center"
      fxLayoutGap="10px"
      fxLayoutGap.xs="0">
 
-  <div fxFlex="100">
+  <div fxFlex="50">
     <mat-card *ngIf="dish">
       <mat-card-header>
         <mat-card-title>
@@ -25,8 +25,8 @@
     </mat-card>
   </div>
 
-  <div fxFlex="50">
-    <mat-card *ngIf="dish">
+  <div fxFlex="45">
+    <div *ngIf="dish">
       <mat-card-header>
         <mat-card-title>
           <h3>Comments</h3>
@@ -42,6 +42,6 @@
           <hr>
         </mat-list>
       </mat-card-content>
-    </mat-card>
+    </div>
   </div>
 </div>
