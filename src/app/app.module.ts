@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DishService } from './services/dish.service';
 import 'hammerjs';
 
 import { MatListModule } from '@angular/material/list';
@@ -33,7 +34,7 @@ import { DishdetailComponent } from './dishdetail/dishdetail.component';
     MatCardModule,
     MatButtonModule,
   ],
-  providers: [],
+  providers: [DishService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
