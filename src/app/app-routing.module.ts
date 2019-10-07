@@ -11,7 +11,7 @@ import { ContactComponent } from './contact/contact.component';
 const routes: Routes = [
   { path: 'home',  component: HomeComponent },
   { path: 'menu',     component: MenuComponent },
-  { path: 'about', component: AboutComponent },
+  { path: 'aboutUs', component: AboutComponent },
   { path: 'dishdetail/:id',     component: DishdetailComponent },
   { path: 'contactUs',    component: ContactComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
