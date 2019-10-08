@@ -47,34 +47,22 @@
           (ngSubmit)="onSubmit()">
       <p>
         <mat-form-field class="half-width">
-          <input matInput formControlName="firstName" placeholder="First Name" type="text">
-          <mat-error
-            *ngIf="feedbackForm.get('firstName').hasError('required') && feedbackForm.get('firstName').touched">
-              First name is required
-          </mat-error>
+          <input matInput formControlName="firstName" placeholder="First Name" type="text" required>
+          <mat-error *ngIf="formErrors.firstName">{{formErrors.firstName}}</mat-error>
         </mat-form-field>
         <mat-form-field class="half-width">
-          <input matInput formControlName="lastName" placeholder="Last Name" type="text">
-          <mat-error
-            *ngIf="feedbackForm.get('lastName').hasError('required') && feedbackForm.get('lastName').touched">
-              Last name is required
-          </mat-error>
+          <input matInput formControlName="lastName" placeholder="Last Name" type="text" required>
+          <mat-error *ngIf="formErrors.lastName">{{formErrors.lastName}}</mat-error>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width">
-          <input matInput formControlName="telNum" placeholder="Tel. Number" type="tel">
-          <mat-error
-            *ngIf="feedbackForm.get('telNum').hasError('required') && feedbackForm.get('telNum').touched">
-              Tel. number is required
-          </mat-error>
+          <input matInput formControlName="telNum" placeholder="Tel. Number" type="tel" pattern="[0-9]*" required>
+          <mat-error *ngIf="formErrors.telNum">{{formErrors.telNum}}</mat-error>
         </mat-form-field>
         <mat-form-field class="half-width">
-          <input matInput formControlName="email" placeholder="Email" type="email">
-          <mat-error
-            *ngIf="feedbackForm.get('email').hasError('required') && feedbackForm.get('email').touched">
-              Email ID is required
-          </mat-error>
+          <input matInput formControlName="email" placeholder="Email" type="email" email required>
+          <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
         </mat-form-field>
       </p>
       <table class="form-size">
@@ -83,8 +71,8 @@
         </td>
         <td>
           <mat-select placeholder="How?" formControlName="contactType">
-            <mat-option *ngFor="let contype of contactType" [value]="contype">
-              {{ contype }}
+            <mat-option *ngFor="let contType of contactType" [value]="contType">
+              {{ contType }}
             </mat-option>
           </mat-select>
         </td>
