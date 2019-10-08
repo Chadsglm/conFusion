@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { trigger, state, style, animate, transition, AnimationTriggerMetadata } from '@angular/animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -12,7 +13,20 @@ import { DishService } from '../services/dish.service';
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
-  styleUrls: ['./dishdetail.component.scss']
+  styleUrls: ['./dishdetail.component.scss'],
+  animations: [
+    trigger('visibility', [
+        state('shown', style({
+            transform: 'scale(1.0)',
+            opacity: 1
+        })),
+        state('hidden', style({
+            transform: 'scale(0.5)',
+            opacity: 0
+        })),
+        transition('* => *', animate('0.5s ease-in-out'))
+    ])
+  ]
 })
 export class DishdetailComponent implements OnInit {
   @ViewChild('fForm', {static: false}) commentFormDirective;
@@ -24,6 +38,7 @@ export class DishdetailComponent implements OnInit {
 
   errMess: string;
   dishCopy = null;
+  visibility = 'shown';
 
   commentForm: FormGroup;
   comment: Comment;
@@ -59,10 +74,13 @@ export class DishdetailComponent implements OnInit {
 
   ngOnInit() {
     this.dishService.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
-    this.route.params.pipe(switchMap((params: Params) => this.dishService.getDish(+params['id'])))
+    this.route.params
+        .pipe(switchMap((params: Params) => { this.visibility = 'hidden';
+                                              return this.dishService.getDish(+params['id']); }))
         .subscribe(dish => { this.dish = dish;
                              this.dishCopy = dish;
-                             this.setPrevNext(dish.id); },
+                             this.setPrevNext(dish.id);
+                             this.visibility = 'shown'; },
                              errMessage => { this.dish = null; this.errMess = <any>errMessage.message; });
                             //  errMessage => this.errMess = <any>errMessage.message);
     this.createComment();
