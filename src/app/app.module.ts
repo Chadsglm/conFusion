@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
-import { HttpClientModule } from '@angular/common/http';
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 
 import 'hammerjs';
 
@@ -76,6 +77,7 @@ import { LoginComponent } from './login/login.component';
     DishService,
     PromotionService,
     LeaderService,
+    ProcessHTTPMsgService,
     {provide: 'BaseURL', useValue: baseURL}
   ],
   entryComponents: [
