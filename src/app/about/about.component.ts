@@ -9,11 +9,14 @@ import { Leader } from '../shared/leader';
 })
 export class AboutComponent implements OnInit {
   leaders: Leader[];
+  leaderErrMess: string;
 
   constructor(private leaderService: LeaderService) { }
 
   ngOnInit() {
-    this.leaderService.getLeaders().subscribe(leaders => this.leaders = leaders);
+    this.leaderService.getLeaders()
+        .subscribe(leaders => this.leaders = leaders,
+                   errMessage => this.leaderErrMess = <any>errMessage.message););
   }
 
 }
