@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit {
     this.dishService.getFeaturedDish()
         .subscribe(dish => this.dish = dish,
                    errMessage => this.dishErrMess = <any>errMessage.message);
-
     this.promotionService.getFeaturedPromotion()
         .subscribe(promotion => this.promotion = promotion,
                    errMessage => this.promoErrMess = <any>errMessage.message);
