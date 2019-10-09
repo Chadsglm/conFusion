@@ -4,7 +4,6 @@ import { Restangular } from 'ngx-restangular';
 import { map } from 'rxjs/operators';
 
 import { Promotion } from '../shared/promotion';
-import { PROMOTIONS } from '../shared/promotions';
 
 @Injectable({
   providedIn: 'root'
