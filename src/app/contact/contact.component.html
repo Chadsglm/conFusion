@@ -88,7 +88,7 @@
               [disabled]="feedbackForm.invalid">Submit
       </button>
     </form>
-    <div [hidden]="submission === false || errMess">
+    <div [hidden]="submission === false || feedbackErrMess">
       <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
     </div>
 
